@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Test Page</title>
+</head>
+<body>
+<!--Tạo fragment trong folder fragment và sử dụng nó ỏ trang này-->
+<th:block th:insert="~{fragments/header :: site-header}"></th:block>
+
+<p th:text="${status}" style="color: green"></p>
+<h1 th:text="${name}"></h1>
+
+
+<form action="/" method="POST">
+    <label>Tên course: </label>
+    <input type="text" th:field="${newCourse.courseName}">
+    <button type="submit">Gửi</button>
+</form>
+
+<p>For each trong view</p>
+<ul th:each="item : ${courses}">
+    <li>
+        <span th:text="${item.id}"></span> -
+        <span th:text="${item.courseName}"></span>
+        <form action="/" method="DELETE">
+            <input type="hidden" th:field="${newCourse.id}">
+            <button type="submit">Xóa</button>
+        </form>
+    </li>
+</ul>
+</body>
+</html>
